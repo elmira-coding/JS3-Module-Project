@@ -1,8 +1,7 @@
 //You can edit ALL of the code here
-//
 function setup() {
-  // it is a calling function fir acessing all episodes
-  //allepisode are an array
+  // it is a calling function fir accessing all episodes
+  //all episode are an array
   const allEpisodes = getAllEpisodes();
   console.log(allEpisodes);
   //
@@ -27,8 +26,6 @@ function createFilmCard(template, episode) {
   // Return the card, rather than directly appending it to the page
   return card;
 }
-
-// const filmCard = createFilmCard(template, allEpisodes);
 //  Remember we need to append the card to the DOM for it to appear.
 // document.body.append(card);
 
