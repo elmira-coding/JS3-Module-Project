@@ -30,7 +30,7 @@ function createFilmCard(template, episode) {
 // document.body.append(card);
 
 // this function is going to make a page to display episode object list
-// some info like title discription and etc
+// some info like title summery and etc
 function makePageForEpisodes(episodeList) {
   // is the main container for every element
   const rootElem = document.getElementById("root");
@@ -40,7 +40,7 @@ function makePageForEpisodes(episodeList) {
 
   // repeat
   episodeList.forEach((episode) => {
-    // create card is the complating template
+    // create card is the completing template
     const card = createFilmCard(template, episode);
     // add to page
     rootElem.appendChild(card);
