@@ -1,15 +1,15 @@
 //You can edit ALL of the code here
 function setup() {
-  // it is a calling function fir accessing all episodes
+  // it is a calling function for accessing all episodes
   //all episode are an array
   const allEpisodes = getAllEpisodes();
-  console.log(allEpisodes);
-  //
   makePageForEpisodes(allEpisodes);
 }
 // const filmCardNode = document
 //   .getElementById("film-card")
 //   .content.cloneNode(true);
+//we need access to searchTerm
+//filter the filmCard based on the searchTerm
 
 function createFilmCard(template, episode) {
   const card = template.content.cloneNode(true);
