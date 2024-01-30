@@ -1,16 +1,30 @@
 //You can edit ALL of the code here
+const allEpisodes = getAllEpisodes();
 function setup() {
   // it is a calling function for accessing all episodes
   //all episode are an array
-  const allEpisodes = getAllEpisodes();
   makePageForEpisodes(allEpisodes);
 }
-// const filmCardNode = document
-//   .getElementById("film-card")
-//   .content.cloneNode(true);
-//we need access to searchTerm
 //filter the filmCard based on the searchTerm
-
+const searchTerm = document.getElementById("q");
+searchTerm.addEventListener("input", render);
+function render() {
+  // console.log(allEpisodes);
+  let filteredEpisode = allEpisodes.filter((episode) => {
+    return episode.name.includes(searchTerm.value);
+  });
+  clearCard();
+  makePageForEpisodes(filteredEpisode);
+  // console.log(searchTerm.value);
+}
+//get the value of input
+//filter the name episode base on the value input
+//render  the filterEpisode on browser
+function clearCard() {
+  document.querySelectorAll(".card").forEach((card) => {
+    card.remove();
+  });
+}
 function createFilmCard(template, episode) {
   const card = template.content.cloneNode(true);
   // Now we are querying our cloned fragment, not the entire page.
@@ -31,7 +45,7 @@ function createFilmCard(template, episode) {
 
 // this function is going to make a page to display episode object list
 // some info like title summery and etc
-function makePageForEpisodes(episodeList) {
+function makePageForEpisodes(allEpisodes) {
   // is the main container for every element
   const rootElem = document.getElementById("root");
   // rootElem.textContent = `Got ${episodeList.length} episode(s)`;
@@ -39,7 +53,7 @@ function makePageForEpisodes(episodeList) {
   const template = document.getElementById("film-card");
 
   // repeat
-  episodeList.forEach((episode) => {
+  allEpisodes.forEach((episode) => {
     // create card is the completing template
     const card = createFilmCard(template, episode);
     // add to page
