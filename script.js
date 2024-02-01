@@ -1,5 +1,11 @@
 //You can edit ALL of the code here
 const allEpisodes = getAllEpisodes();
+function getAllEpisodes() {
+  const fetchUrl = "https://api.tvmaze.com/shows/82/episodes";
+  return fetch(fetchUrl).then((data) => {
+    return data.json();
+  });
+}
 function setup() {
   // it is a calling function for accessing all episodes
   //all episode are an array
@@ -16,6 +22,12 @@ function render() {
   clearCard();
   makePageForEpisodes(filteredEpisode);
   // console.log(searchTerm.value);
+  displayEpisodeNum(allEpisodes, filteredEpisode);
+}
+function displayEpisodeNum(data, filteredEpisode) {
+  const episodeNum = document.getElementById("episode-num");
+  episodeNum.textContent = filteredEpisode.length + "/" + data.length;
+  console.log(episodeNum);
 }
 //get the value of input
 //filter the name episode base on the value input
@@ -45,19 +57,22 @@ function createFilmCard(template, episode) {
 
 // this function is going to make a page to display episode object list
 // some info like title summery and etc
-function makePageForEpisodes(allEpisodes) {
-  // is the main container for every element
-  const rootElem = document.getElementById("root");
-  // rootElem.textContent = `Got ${episodeList.length} episode(s)`;
-  // find the template for one episode
-  const template = document.getElementById("film-card");
+function makePageForEpisodes() {
+  getAllEpisodes().then((data) => {
+    const allEpisodes = data;
+    // is the main container for every element
+    const rootElem = document.getElementById("root");
+    // rootElem.textContent = `Got ${episodeList.length} episode(s)`;
+    // find the template for one episode
+    const template = document.getElementById("film-card");
 
-  // repeat
-  allEpisodes.forEach((episode) => {
-    // create card is the completing template
-    const card = createFilmCard(template, episode);
-    // add to page
-    rootElem.appendChild(card);
+    // repeat
+    allEpisodes.forEach((episode) => {
+      // create card is the completing template
+      const card = createFilmCard(template, episode);
+      // add to page
+      rootElem.appendChild(card);
+    });
   });
 }
 
