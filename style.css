@@ -32,3 +32,10 @@ h3{
   padding:1rem;
   margin-top:0;
 }
+.search-bar{
+  margin-bottom: 1rem;
+  border: 1px solid black;
+  border-radius: .5rem;
+  padding: 5px;
+  margin-left: 1rem;
+}
