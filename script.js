@@ -32,6 +32,7 @@ function displayEpisodeNum(data, filteredEpisode) {
 //get the value of input
 //filter the name episode base on the value input
 //render  the filterEpisode on browser
+
 function clearCard() {
   document.querySelectorAll(".card").forEach((card) => {
     card.remove();
