@@ -12,6 +12,7 @@ function setup() {
   getAllEpisodes().then((data) => {
     allEpisodes = data;
     makePageForEpisodes(allEpisodes);
+    displayEpisodeNum(allEpisodes, allEpisodes);
   });
 }
 //filter the filmCard based on the searchTerm
@@ -29,7 +30,7 @@ function render() {
   displayEpisodeNum(allEpisodes, filteredEpisode);
 }
 function displayEpisodeNum(data, filteredEpisode) {
-  const episodeNum = document.getElementById("episode-num");
+  const episodeNum = document.querySelector("#episode-num");
   episodeNum.textContent = filteredEpisode.length + "/" + data.length;
   console.log(episodeNum);
 }
@@ -62,7 +63,7 @@ function createFilmCard(template, episode) {
 
 // this function is going to make a page to display episode object list
 // some info like title summery and etc
-function makePageForEpisodes() {
+function makePageForEpisodes(episodes) {
   // getAllEpisodes().then((data) => {
   //   const allEpisodes = data;
   //   // is the main container for every element
@@ -72,7 +73,7 @@ function makePageForEpisodes() {
   const template = document.getElementById("film-card");
 
   // repeat
-  allEpisodes.forEach((episode) => {
+  episodes.forEach((episode) => {
     // create card is the completing template
     const card = createFilmCard(template, episode);
     // add to page

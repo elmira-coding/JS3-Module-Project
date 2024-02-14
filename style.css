@@ -39,9 +39,11 @@ h3{
   padding: 5px;
   margin-left: 1rem;
 }
-.num-episode{
-  height:5rem;
-  width:20rem;
-  display: block;
-  color: black;
+
+.header{
+  display: flex;
+  gap:4rem;
+  height: 5rem;
+
+
 }
